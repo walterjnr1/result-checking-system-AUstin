@@ -1,0 +1,65 @@
+		.columns {
+			column-count: 5; /* number of columns */
+			column-gap: 20px; /* gap between columns */
+		}
+		.column {
+			border: 1px solid black; /* add a 1px solid black border */
+			border-radius: 10px; /* add a 10px radius to the border */
+			padding: 10px; /* add some padding to the column content */
+		}
+		.input-field {
+			
+    width: 40%; /* make the input field full width */
+    padding: 10px; /* add some padding to the input field */
+    border: none; /* remove the default border */
+    border-radius: 10px; /* add a 10px radius to the input field */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* add a subtle shadow */
+    font-size: 16px; /* increase the font size */
+    display: inline-block; /* make the input field an inline-block element */
+}
+
+		
+		.input-field:focus {
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* increase the shadow on focus */
+			border-color: #aaa; /* change the border color on focus */
+		}
+		.label {
+			display: block; /* make the label a block element */
+			margin-bottom: 10px; /* add some margin between the label and input field */
+			font-weight: bold; /* make the label bold */
+			color: #333; /* change the label color */
+		}
+		.style1 {font-size: 9px}
+		button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 40px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .blue {
+            background-color: #3daaf3;
+            color: #fff;
+        }
+
+        .green {
+            background-color: #3bda7d;
+            color: #fff;
+        }
+
+                /* Hover Styles */
+        button:hover {
+            background-color: #616161;
+        }
+		button[name="btnsave"] {
+			display: block;
+            margin: 0 auto;
+}
+button[name="btngenerate"] {
+    margin-left: 10px; /* add some margin to the left of the button */
+    vertical-align: right; /* vertically align the button with the input field */
+}
+ 
