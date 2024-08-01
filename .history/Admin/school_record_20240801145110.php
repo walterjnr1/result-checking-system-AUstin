@@ -153,7 +153,7 @@ else {return false;
           </thead>
           <tbody>
 		  <?php 
-          $data = $dbh->query("SELECT schooltable.*,zonetable.name as zoneName ,regiontable.name as regionName,districttable.DistrictName as districtName FROM schoolregistrationtbl schooltable LEFT JOIN tblzone zonetable ON schooltable.Zone  = zonetable.id LEFT JOIN tblregion regiontable ON schooltable.Region  = regiontable.id LEFT JOIN tbldistrict districttable ON schooltable.District  = districttable.id ORDER BY schooltable.SchoolName DESC ")->fetchAll();   
+          $data = $dbh->query("SELECT schooltable.*,zonetable.name as zoneName ,regiontable.name as regionName,district.name as districtName FROM schoolregistrationtbl schooltable LEFT JOIN tblzone zonetable ON schooltable.Zone  = zonetable.id LEFT JOIN tblregion regiontable ON schooltable.Region  = regiontable.id LEFT JOIN tbldistrict districttable ON schooltable.District  = districttable.id ORDER BY schooltable.id DESC ")->fetchAll();   
           $cnt=1;
 foreach ($data as $row) {
 ?>

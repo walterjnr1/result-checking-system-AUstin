@@ -24,8 +24,8 @@ $location = $_POST['txtlocation'];
 $gpsaddress = $_POST['txtgpsaddress'];
 $schoolcreationDate = $_POST['txtschoolcreationDate'];
 $district = $_POST['cmddistrict'];
-$region = $_POST['cmdregion'];
-$zone = $_POST['cmdzone'];
+$region = $_POST['txtregion'];
+$zone = $_POST['txtzone'];
 $ITname = $_POST['txtITname'];
 
 

@@ -23,9 +23,9 @@ $SchPhone2 = $_POST['txtphone2'];
 $location = $_POST['txtlocation'];
 $gpsaddress = $_POST['txtgpsaddress'];
 $schoolcreationDate = $_POST['txtschoolcreationDate'];
-$district = $_POST['cmddistrict'];
-$region = $_POST['cmdregion'];
-$zone = $_POST['cmdzone'];
+$district = $_POST['txtdistrict'];
+$region = $_POST['txtregion'];
+$zone = $_POST['txtzone'];
 $ITname = $_POST['txtITname'];
 
 
@@ -269,11 +269,11 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
                 <label for="exampleInputPassword1">District</label>
                 <?php
 			$sql = "select * from tbldistrict";
-             $district = $dbh->query($sql);                       
-             $district->setFetchMode(PDO::FETCH_ASSOC);
+             $group = $dbh->query($sql);                       
+             $group->setFetchMode(PDO::FETCH_ASSOC);
              echo '<select name="cmddistrict"  id="cmddistrict" class="form-control" >';
 			 			     echo '<option value="">Select District Name</option>';
-             while ( $row = $district->fetch() ) 
+             while ( $row = $group->fetch() ) 
              {
                 echo '<option value="'.$row['id'].'">'.$row['DistrictName'].'</option>';
              }
@@ -285,8 +285,8 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
                 <label for="exampleInputPassword1">Region</label>
                 <?php
 			$sql = "select * from tblregion";
-             $region = $dbh->query($sql);                       
-             $region->setFetchMode(PDO::FETCH_ASSOC);
+             $group = $dbh->query($sql);                       
+             $group->setFetchMode(PDO::FETCH_ASSOC);
              echo '<select name="cmdregion"  id="cmdregion" class="form-control" >';
 			 			     echo '<option value="">Select Region Name</option>';
              while ( $row = $region->fetch() ) 

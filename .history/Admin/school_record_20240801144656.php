@@ -153,7 +153,7 @@ else {return false;
           </thead>
           <tbody>
 		  <?php 
-          $data = $dbh->query("SELECT schooltable.*,zonetable.name as zoneName ,regiontable.name as regionName,districttable.DistrictName as districtName FROM schoolregistrationtbl schooltable LEFT JOIN tblzone zonetable ON schooltable.Zone  = zonetable.id LEFT JOIN tblregion regiontable ON schooltable.Region  = regiontable.id LEFT JOIN tbldistrict districttable ON schooltable.District  = districttable.id ORDER BY schooltable.SchoolName DESC ")->fetchAll();   
+          $data = $dbh->query("SELECT schooltable.*,zonetable.name as zoneName ,regiontable.name as regionName,district.name as districtName FROM schoolregistrationtbl schooltable LEFT JOIN tblzone zonetable ON sat.SchRegCode  = srt.SchRegCode ORDER BY sat.FirstName DESC ")->fetchAll();   
           $cnt=1;
 foreach ($data as $row) {
 ?>
@@ -168,9 +168,9 @@ foreach ($data as $row) {
 						   <td><?php echo $row['Location'];  ?> </td>
                <td><?php echo $row['GPSAddress'];  ?></td>
                <td><?php echo $row['datereg'];  ?></td>
-               <td><?php echo $row['districtName'];  ?></td>
-               <td><?php echo $row['regionName'];  ?></td>
-               <td><?php echo $row['zoneName'];  ?></td>
+               <td><?php echo $row['District'];  ?></td>
+               <td><?php echo $row['Region'];  ?></td>
+               <td><?php echo $row['Zone'];  ?></td>
                <td><?php echo $row['ITName'];  ?></td>
                <td><?php echo $row['AccountsPass'];  ?></td>
                <td><?php echo $row['AccExpiryDate'];  ?></td>

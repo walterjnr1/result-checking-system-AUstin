@@ -23,9 +23,9 @@ $SchPhone2 = $_POST['txtphone2'];
 $location = $_POST['txtlocation'];
 $gpsaddress = $_POST['txtgpsaddress'];
 $schoolcreationDate = $_POST['txtschoolcreationDate'];
-$district = $_POST['cmddistrict'];
-$region = $_POST['cmdregion'];
-$zone = $_POST['cmdzone'];
+$district = $_POST['txtdistrict'];
+$region = $_POST['txtregion'];
+$zone = $_POST['txtzone'];
 $ITname = $_POST['txtITname'];
 
 
@@ -273,7 +273,7 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
              $district->setFetchMode(PDO::FETCH_ASSOC);
              echo '<select name="cmddistrict"  id="cmddistrict" class="form-control" >';
 			 			     echo '<option value="">Select District Name</option>';
-             while ( $row = $district->fetch() ) 
+             while ( $row = $group->fetch() ) 
              {
                 echo '<option value="'.$row['id'].'">'.$row['DistrictName'].'</option>';
              }
