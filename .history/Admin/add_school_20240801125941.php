@@ -252,43 +252,43 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input class="form-control" name="txtemail" value="<?php if (isset($_POST['txtemail']))?><?php echo $_POST['txtemail']; ?>" type="email" required>
+                <input class="form-control" name="txtemail" value="<?php if (isset($_POST['txtemail']))?><?php echo $_POST['txtemail']; ?>" type="email">
               </div>
                <div class="form-group">
                 <label for="exampleInputPassword1">Location</label>
-                <input class="form-control" name="txtlocation" value="<?php if (isset($_POST['txtlocation']))?><?php echo $_POST['txtlocation']; ?>" type="text" required>
+                <input class="form-control" name="txtlocation" value="<?php if (isset($_POST['txtlocation']))?><?php echo $_POST['txtlocation']; ?>" type="text">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">GPS Address</label>
-                <input class="form-control" name="txtgpsaddress" value="<?php if (isset($_POST['txtgpsaddress']))?><?php echo $_POST['txtgpsaddress']; ?>" type="text" required>
+                <input class="form-control" name="txtgpsaddress" value="<?php if (isset($_POST['txtgpsaddress']))?><?php echo $_POST['txtgpsaddress']; ?>" type="text">
             </div><div class="form-group">
                 <label for="exampleInputPassword1">Year School Founded</label>
-                <input class="form-control" name="txtschoolcreationDate" value="<?php if (isset($_POST['txtytxtschoolcreationDateoe']))?><?php echo $_POST['txtschoolcreationDate']; ?>" type="text" required>
+                <input class="form-control" name="txtschoolcreationDate" value="<?php if (isset($_POST['txtytxtschoolcreationDateoe']))?><?php echo $_POST['txtschoolcreationDate']; ?>" type="text">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">District</label>
-                <input class="form-control" name="txtdistrict" value="<?php if (isset($_POST['txtdistrict']))?><?php echo $_POST['txtdistrict']; ?>" type="text" required>
+                <input class="form-control" name="txtdistrict" value="<?php if (isset($_POST['txtdistrict']))?><?php echo $_POST['txtdistrict']; ?>" type="text">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Region</label>
-                <input class="form-control" name="txtregion" value="<?php if (isset($_POST['txtregion']))?><?php echo $_POST['txtregion']; ?>" type="text" required>
+                <input class="form-control" name="txtregion" value="<?php if (isset($_POST['txtregion']))?><?php echo $_POST['txtregion']; ?>" type="text">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Zone</label>
-                <input class="form-control" name="txtzone" value="<?php if (isset($_POST['txtzone']))?><?php echo $_POST['txtzone']; ?>" type="text" required>
+                <input class="form-control" name="txtzone" value="<?php if (isset($_POST['txtzone']))?><?php echo $_POST['txtzone']; ?>" type="text">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">IT Name</label>
-                <input class="form-control" name="txtITname" value="<?php if (isset($_POST['txtITname']))?><?php echo $_POST['txtITname']; ?>" type="text" required>
+                <input class="form-control" name="txtITname" value="<?php if (isset($_POST['txtITname']))?><?php echo $_POST['txtITname']; ?>" type="text">
             </div>
             
             <div class="form-group">
                 <label for="exampleInputPassword1">Phone 1</label>
-                <input class="form-control" name="txtphone1" value="<?php if (isset($_POST['txtphone1']))?><?php echo $_POST['txtphone1']; ?>" type="telephone" required>
+                <input class="form-control" name="txtphone1" value="<?php if (isset($_POST['txtphone1']))?><?php echo $_POST['txtphone1']; ?>" type="telephone">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Phone 2</label>
-                <input class="form-control" name="txtphone2" value="<?php if (isset($_POST['txtphone2']))?><?php echo $_POST['txtphone2']; ?>" type="telephone" required>
+                <input class="form-control" name="txtphone2" value="<?php if (isset($_POST['txtphone2']))?><?php echo $_POST['txtphone2']; ?>" type="telephone">
             </div>
             
             

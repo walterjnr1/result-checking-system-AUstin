@@ -62,11 +62,10 @@ include('../inc/controller.php');
 	    <a href="student_record.php"> <i class="fa fa-graduation-cap"></i> <span>Manage Student</span>  </a>
          
       </li>
-      <li class="treeview"> <a href="#"> <i class="fa fa-map"></i><span>Manage Location</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+      <li class="treeview"> <a href="#"> <i class="fa fa-map-pin"></i><span>Manage Scratch Card</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-          <li><a href="region_record.php"><i class="fa fa-angle-right"></i>Region Record</a></li>
-            <li><a href="zone_record.php"><i class="fa fa-angle-right"></i>Zone Record</a></li>
-            <li><a href="district_record.php"><i class="fa fa-angle-right"></i>District Record</a></li>
+            <li><a href="index_scratchcard.php"><i class="fa fa-angle-right"></i> Generate Scratch Card</a></li>
+            <li><a href="scratchcard_record.php"><i class="fa fa-angle-right"></i>Scratch Card Record</a></li>
 
           </ul>
         </li> 

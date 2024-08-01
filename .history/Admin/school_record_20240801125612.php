@@ -163,7 +163,6 @@ foreach ($data as $row) {
                <td><?php echo $row['SchRegCode'];  ?></td>
                <td><?php echo $row['SchoolName'];  ?></td>
                <td><?php echo $row['email'];  ?></td>
-               <td><?php echo $row['SchPassword'];  ?></td>
                <td><?php echo $row['SchShortCode'];  ?></td>
 						   <td><?php echo $row['Location'];  ?> </td>
                <td><?php echo $row['GPSAddress'];  ?></td>

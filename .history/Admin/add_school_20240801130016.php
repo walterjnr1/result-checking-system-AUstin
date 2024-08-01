@@ -288,7 +288,7 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Phone 2</label>
-                <input class="form-control" name="txtphone2" value="<?php if (isset($_POST['txtphone2']))?><?php echo $_POST['txtphone2']; ?>" type="telephone" required>
+                <input class="form-control" name="txtphone2" value="<?php if (isset($_POST['txtphone2']))?><?php echo $_POST['txtphone2']; ?>" type="telephone" >
             </div>
             
             

@@ -271,24 +271,24 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Region</label>
-                <input class="form-control" name="txtregion" value="<?php if (isset($_POST['txtregion']))?><?php echo $_POST['txtregion']; ?>" type="text" required>
+                <input class="form-control" name="txtregion" value="<?php if (isset($_POST['txtregion']))?><?php echo $_POST['txtregion']; ?>" type="text">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Zone</label>
-                <input class="form-control" name="txtzone" value="<?php if (isset($_POST['txtzone']))?><?php echo $_POST['txtzone']; ?>" type="text" required>
+                <input class="form-control" name="txtzone" value="<?php if (isset($_POST['txtzone']))?><?php echo $_POST['txtzone']; ?>" type="text">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">IT Name</label>
-                <input class="form-control" name="txtITname" value="<?php if (isset($_POST['txtITname']))?><?php echo $_POST['txtITname']; ?>" type="text" required>
+                <input class="form-control" name="txtITname" value="<?php if (isset($_POST['txtITname']))?><?php echo $_POST['txtITname']; ?>" type="text">
             </div>
             
             <div class="form-group">
                 <label for="exampleInputPassword1">Phone 1</label>
-                <input class="form-control" name="txtphone1" value="<?php if (isset($_POST['txtphone1']))?><?php echo $_POST['txtphone1']; ?>" type="telephone" required>
+                <input class="form-control" name="txtphone1" value="<?php if (isset($_POST['txtphone1']))?><?php echo $_POST['txtphone1']; ?>" type="telephone">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Phone 2</label>
-                <input class="form-control" name="txtphone2" value="<?php if (isset($_POST['txtphone2']))?><?php echo $_POST['txtphone2']; ?>" type="telephone" required>
+                <input class="form-control" name="txtphone2" value="<?php if (isset($_POST['txtphone2']))?><?php echo $_POST['txtphone2']; ?>" type="telephone">
             </div>
             
             

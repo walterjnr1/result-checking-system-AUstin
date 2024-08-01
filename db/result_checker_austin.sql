@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2024 at 01:25 PM
+-- Generation Time: Aug 01, 2024 at 03:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,41 @@ CREATE TABLE `activity_log` (
   `task` varchar(5000) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `activity_log`
+--
+
+INSERT INTO `activity_log` (`ID`, `task`) VALUES
+(1393, ' Deleted district record On 2024-08-01 14:20:28'),
+(1392, ' edited District details On 2024-08-01 14:20:24'),
+(1391, ' Created New Region  On 2024-08-01 14:05:12'),
+(1390, ' Deleted Region record On 2024-08-01 14:05:09'),
+(1389, ' Created New Region  On 2024-08-01 14:02:23'),
+(1388, ' Deleted Region record On 2024-08-01 14:00:43'),
+(1387, ' Deleted Region record On 2024-08-01 14:00:40'),
+(1386, ' Created New Region  On 2024-08-01 14:00:34'),
+(1385, ' Deleted Zone record On 2024-08-01 14:00:26'),
+(1384, ' Deleted Zone record On 2024-08-01 14:00:24'),
+(1383, ' Deleted Zone record On 2024-08-01 14:00:21'),
+(1382, ' Deleted Zone record On 2024-08-01 14:00:19'),
+(1381, ' Deleted Zone record On 2024-08-01 14:00:16'),
+(1380, ' Deleted Zone record On 2024-08-01 14:00:14'),
+(1379, ' Created New Zone  On 2024-08-01 13:58:15'),
+(1378, ' Created New Region  On 2024-08-01 13:57:48'),
+(1377, 'Ndueso Walter Logged In On 2024-08-01 13:57:37'),
+(1376, ' Created New Region  On 2024-08-01 13:38:48'),
+(1375, ' Created New Region  On 2024-08-01 13:37:46'),
+(1374, ' Created New Region  On 2024-08-01 13:36:03'),
+(1373, ' Created New Zone  On 2024-08-01 13:33:50'),
+(1372, ' Created New Zone  On 2024-08-01 13:33:45'),
+(1371, ' Created New Zone  On 2024-08-01 13:32:50'),
+(1370, ' Created New Zone  On 2024-08-01 13:32:41'),
+(1369, ' Created New Zone  On 2024-08-01 13:32:02'),
+(1368, ' Deleted Region record On 2024-08-01 13:27:07'),
+(1367, ' edited Region details On 2024-08-01 13:27:00'),
+(1366, ' edited Region details On 2024-08-01 13:26:52'),
+(1365, 'Ndueso Walter Logged In On 2024-08-01 12:53:58');
+
 -- --------------------------------------------------------
 
 --
@@ -52,29 +87,6 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `name`, `email`, `subject`, `message`) VALUES
 (1, 'Ajay', 'ajay@gmail.com', 'qdeeas', 'dsgffhgjhmhjm');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `districtstbl`
---
-
-CREATE TABLE `districtstbl` (
-  `DistrictNo` int(11) NOT NULL,
-  `DistrictName` varchar(100) DEFAULT NULL,
-  `RegionFound` varchar(50) DEFAULT NULL,
-  `DistrictShortCode` varchar(10) DEFAULT NULL,
-  `Password` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `districtstbl`
---
-
-INSERT INTO `districtstbl` (`DistrictNo`, `DistrictName`, `RegionFound`, `DistrictShortCode`, `Password`) VALUES
-(1, 'Agona Swedru District', 'Central Region', 'CR', 'asd'),
-(2, 'Gomoa East District', 'Central Region', 'CR', 'ged'),
-(3, 'Awutu Senya District', 'Central Region', 'CR', 'asd');
 
 -- --------------------------------------------------------
 
@@ -553,6 +565,28 @@ INSERT INTO `tblclass` (`id`, `classname`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbldistrict`
+--
+
+CREATE TABLE `tbldistrict` (
+  `id` int(11) NOT NULL,
+  `DistrictName` varchar(100) DEFAULT NULL,
+  `RegionFound` varchar(50) DEFAULT NULL,
+  `DistrictShortCode` varchar(10) DEFAULT NULL,
+  `Password` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `tbldistrict`
+--
+
+INSERT INTO `tbldistrict` (`id`, `DistrictName`, `RegionFound`, `DistrictShortCode`, `Password`) VALUES
+(2, 'Gomoa East District', 'Central Region', 'CR', 'ged'),
+(3, 'Awutu Senya District', 'Central Region', 'CR', 'asd');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblexamtype`
 --
 
@@ -590,6 +624,25 @@ INSERT INTO `tblgroup` (`ID`, `groupname`) VALUES
 (1, 'Super Admin'),
 (2, 'Admin'),
 (3, 'User');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblregion`
+--
+
+CREATE TABLE `tblregion` (
+  `id` int(11) NOT NULL,
+  `name` varchar(44) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblregion`
+--
+
+INSERT INTO `tblregion` (`id`, `name`) VALUES
+(2, 'Region 2'),
+(9, 'XY');
 
 -- --------------------------------------------------------
 
@@ -1114,6 +1167,25 @@ INSERT INTO `tblstaff` (`ID`, `StaffID`, `StaffName`, `HQ`, `PhoneNumber`, `CA3`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblzone`
+--
+
+CREATE TABLE `tblzone` (
+  `id` int(11) NOT NULL,
+  `name` varchar(44) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblzone`
+--
+
+INSERT INTO `tblzone` (`id`, `name`) VALUES
+(1, 'zone 1'),
+(2, 'zone 2');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -1185,12 +1257,6 @@ ALTER TABLE `activity_log`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `districtstbl`
---
-ALTER TABLE `districtstbl`
-  ADD PRIMARY KEY (`DistrictNo`);
 
 --
 -- Indexes for table `examsresultstbl`
@@ -1271,6 +1337,12 @@ ALTER TABLE `tblclass`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbldistrict`
+--
+ALTER TABLE `tbldistrict`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tblexamtype`
 --
 ALTER TABLE `tblexamtype`
@@ -1281,6 +1353,12 @@ ALTER TABLE `tblexamtype`
 --
 ALTER TABLE `tblgroup`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tblregion`
+--
+ALTER TABLE `tblregion`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tblresultsummary`
@@ -1299,6 +1377,12 @@ ALTER TABLE `tblscratchcard`
 --
 ALTER TABLE `tblstaff`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tblzone`
+--
+ALTER TABLE `tblzone`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -1320,19 +1404,13 @@ ALTER TABLE `websiteinfo`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1365;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1394;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `districtstbl`
---
-ALTER TABLE `districtstbl`
-  MODIFY `DistrictNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `examsresultstbl`
@@ -1389,6 +1467,12 @@ ALTER TABLE `tblclass`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `tbldistrict`
+--
+ALTER TABLE `tbldistrict`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tblexamtype`
 --
 ALTER TABLE `tblexamtype`
@@ -1399,6 +1483,12 @@ ALTER TABLE `tblexamtype`
 --
 ALTER TABLE `tblgroup`
   MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tblregion`
+--
+ALTER TABLE `tblregion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblresultsummary`
@@ -1417,6 +1507,12 @@ ALTER TABLE `tblscratchcard`
 --
 ALTER TABLE `tblstaff`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tblzone`
+--
+ALTER TABLE `tblzone`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`

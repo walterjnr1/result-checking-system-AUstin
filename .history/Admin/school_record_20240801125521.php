@@ -133,7 +133,6 @@ else {return false;
               <th>School Reg Code</th>
 			        <th>School Name</th>
               <th>School Email</th>
-              <th>School Password</th>
               <th>School Short Code </th>
               <th>Location </th>
               <th>GPS Address</th>
@@ -142,6 +141,7 @@ else {return false;
               <th>Region</th>
 			        <th>Zone</th>
               <th>IT Name</th>
+              <th>School Password</th>
               <th>Account Password</th>
 			        <th>Account Expiry Date</th>
               <th>Phone 1</th>
@@ -162,8 +162,6 @@ foreach ($data as $row) {
                <td><div align="center"><span class="controls"><img src="../<?php echo $row['logo'];?>"  width="50" height="43" border="2"/></span></div></td>
                <td><?php echo $row['SchRegCode'];  ?></td>
                <td><?php echo $row['SchoolName'];  ?></td>
-               <td><?php echo $row['email'];  ?></td>
-               <td><?php echo $row['SchPassword'];  ?></td>
                <td><?php echo $row['SchShortCode'];  ?></td>
 						   <td><?php echo $row['Location'];  ?> </td>
                <td><?php echo $row['GPSAddress'];  ?></td>
@@ -172,6 +170,7 @@ foreach ($data as $row) {
                <td><?php echo $row['Region'];  ?></td>
                <td><?php echo $row['Zone'];  ?></td>
                <td><?php echo $row['ITName'];  ?></td>
+               <td><?php echo $row['SchPassword'];  ?></td>
                <td><?php echo $row['AccountsPass'];  ?></td>
                <td><?php echo $row['AccExpiryDate'];  ?></td>
                <td><?php echo $row['SchPhone1'];  ?></td>

@@ -66,7 +66,7 @@ include('../inc/controller.php');
           <ul class="treeview-menu">
           <li><a href="region_record.php"><i class="fa fa-angle-right"></i>Region Record</a></li>
             <li><a href="zone_record.php"><i class="fa fa-angle-right"></i>Zone Record</a></li>
-            <li><a href="district_record.php"><i class="fa fa-angle-right"></i>District Record</a></li>
+            <li><a href="zone_record.php"><i class="fa fa-angle-right"></i>Zone Record</a></li>
 
           </ul>
         </li> 

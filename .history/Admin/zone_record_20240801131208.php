@@ -15,7 +15,7 @@ if(strlen($_SESSION['login_email'])=="")
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>School Record|<?php echo $website_name;   ?> </title>
+<title>Zone Record|<?php echo $website_name;   ?> </title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,8 +38,8 @@ if(strlen($_SESSION['login_email'])=="")
 <!-- DataTables -->
 <link rel="stylesheet" href="dist/plugins/datatables/css/dataTables.bootstrap.min.css">
 <script type="text/javascript">
-		function deldata(SchoolName){
-if(confirm("ARE YOU SURE YOU WISH TO DELETE " + " " + SchoolName + " " + " FROM THE LIST?"))
+		function deldata(exam_name){
+if(confirm("ARE YOU SURE YOU WISH TO DELETE " + " " + exam_name + " " + " FROM THE LIST?"))
 {
 return  true;
 }
@@ -50,42 +50,7 @@ else {return false;
 
 </script>
 
-<script type="text/javascript">
-		function Extend(SchoolName){
-if(confirm("ARE YOU SURE YOU WISH TO EXTEND ACCOUNT EXPIRY DATE FOR " + " " + SchoolName + " " + " ?"))
-{
-return  true;
-}
-else {return false;
-}
-	 
-}
 
-</script>
-<script type="text/javascript">
-function Activate(SchoolName){
-if(confirm("ARE YOU SURE YOU WISH TO Activate " + " " + SchoolName + " " + " ON THE LIST?"))
-{
-return  true;
-}
-else {return false;
-}
-	 
-}
-
-</script>
-<script type="text/javascript">
-function Deactivate(SchoolName){
-if(confirm("ARE YOU SURE YOU WISH TO Deactivate " + " " + SchoolName + " " + " ON THE LIST?"))
-{
-return  true;
-}
-else {return false;
-}
-	 
-}
-
-</script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -109,10 +74,10 @@ else {return false;
   <div class="content-wrapper"> 
     <!-- Content Header (Page header) -->
     <div class="content-header sty-one">
-      <h1>Student Record </h1>
+      <h1>Zone Record </h1>
       <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li><i class="fa fa-angle-right"></i> Student Record </li>
+        <li><i class="fa fa-angle-right"></i> Zone Record </li>
       </ol>
     </div>
     
@@ -121,7 +86,7 @@ else {return false;
       <div class="card m-t-3">
       <div class="card-body">
       <h4 class="text-black"> 
-        <a href="add_school.php"><button type="submit" name="btnsubmit" class="btn btn-primary">Add School</button> </a>
+        <a href="add_exam.php"><button type="submit" name="btnsubmit" class="btn btn-primary">Add Exam</button> </a>
  </h4>
       <p>&nbsp;</p>
       <div class="table-responsive">
@@ -129,69 +94,23 @@ else {return false;
           <thead>
             <tr>
 			        <th>#</th>
-              <th>Logo</th>
-              <th>School Reg Code</th>
-			        <th>School Name</th>
-              <th>School Email</th>
-              <th>School Password</th>
-              <th>School Short Code </th>
-              <th>Location </th>
-              <th>GPS Address</th>
-			        <th>Date of Registration</th>
-              <th>District </th>
-              <th>Region</th>
-			        <th>Zone</th>
-              <th>IT Name</th>
-              <th>Account Password</th>
-			        <th>Account Expiry Date</th>
-              <th>Phone 1</th>
-              <th>Phone 2</th>
-              <th>year Founded</th>
-			         <th>Status</th>
-              <th>Action</th>
+              <th>Name</th>
+                <th>Action</th>
             </tr>
           </thead>
           <tbody>
 		  <?php 
-$data = $dbh->query("SELECT *  FROM schoolregistrationtbl order by SchoolName DESC")->fetchAll();
+$data = $dbh->query("SELECT *  FROM tblzone order by name DESC")->fetchAll();
 $cnt=1;
 foreach ($data as $row) {
 ?>
             <tr>
                <td><?php echo $cnt;  ?></td>
-               <td><div align="center"><span class="controls"><img src="../<?php echo $row['logo'];?>"  width="50" height="43" border="2"/></span></div></td>
-               <td><?php echo $row['SchRegCode'];  ?></td>
-               <td><?php echo $row['SchoolName'];  ?></td>
-               <td><?php echo $row['email'];  ?></td>
-               <td><?php echo $row['SchPassword'];  ?></td>
-               <td><?php echo $row['SchShortCode'];  ?></td>
-						   <td><?php echo $row['Location'];  ?> </td>
-               <td><?php echo $row['GPSAddress'];  ?></td>
-               <td><?php echo $row['datereg'];  ?></td>
-               <td><?php echo $row['District'];  ?></td>
-               <td><?php echo $row['Region'];  ?></td>
-               <td><?php echo $row['Zone'];  ?></td>
-               <td><?php echo $row['ITName'];  ?></td>
-               <td><?php echo $row['AccountsPass'];  ?></td>
-               <td><?php echo $row['AccExpiryDate'];  ?></td>
-               <td><?php echo $row['SchPhone1'];  ?></td>
-               <td><?php echo $row['SchPhone2'];  ?></td>
-               <td><?php echo $row['schoolcreationDate'];  ?></td>
-               <td>    
-			      <?php if($row['status']=="0")
-{ ?>
-			   <span class="badge badge-danger">Inactive</span>
-			   <?php } else {?>
-			    <span class="badge badge-success">Active</span><?php } ?>
-			   </td>
-			   <td><div align="center">
-      <?php if($row['status']=="0")
-{ ?>
-<a href="Deactivate_activate_school.php?id=<?php echo $row['SchRegCode'];?>" onClick="return Activate('<?php echo $row['SchoolName']; ?>');"><i class="fa fa-check" title="Activate School Account"></i> </a><?php } else {?>
- <a href="Deactivate_activate_school.php?did=<?php echo $row['SchRegCode'];?>" onClick="return Deactivate('<?php echo $row['SchoolName']; ?>');"><i class="fa fa-times" title="Deactivate School Account"></i> </a><?php } ?>
- <a href="delete_school.php?id=<?php echo $row['SchRegCode'];?>" onClick="return deldata('<?php echo $row['SchoolName']; ?>');"><i class="fa fa-trash" title="Delete School Account"></i> </a>
- <a href="edit_school.php?id=<?php echo $row['SchRegCode'];?>"><i class="fa fa-edit" title="Update School Details"></i> </a>
- <a href="#" onClick="return Extend('<?php echo $row['SchoolName']; ?>');"><i class="fa fa-dollar" title="Extend Expiry Date for <?php echo $row['SchoolName']; ?>"></i> </a>
+               <td><?php echo $row['name'];  ?></td>
+               
+               <td>
+ <a href="delete_zone.php?id=<?php echo $row['id'];?>" onClick="return deldata('<?php echo $row['exam_name']; ?>');"><i class="fa fa-trash" title="Delete Exam"></i> </a>
+ <a href="edit_zone.php?id=<?php echo $row['id'];?>"><i class="fa fa-edit" title="Update Exam Details"></i> </a>
 
 
 						</div></td>
