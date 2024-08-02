@@ -14,6 +14,20 @@ if (empty($_SESSION['login_SchRegCode'])) {
  if(isset($_POST["btnadd"])){
  $studentAdmNo = date("Y").$SchShortCode.substr(str_shuffle("12345670"), 0, 6);
 
+ $file_type = $_FILES['photo']['type']; //returns the mimetype
+ $allowed = array("image/jpeg", "image/gif","image/jpeg", "image/webp","image/png");
+ if(!in_array($file_type, $allowed)) {
+ $error = 'Only jpeg,Webp, gif, and png files are allowed.';
+  // exit();
+ 
+ }else{
+ $image= addslashes(file_get_contents($_FILES['photo']['tmp_name']));
+ $image_name= addslashes($_FILES['photo']['name']);
+ $image_size= getimagesize($_FILES['photo']['tmp_name']);
+ move_uploaded_file($_FILES["photo"]["tmp_name"],"../uploadImage/student/" . $_FILES["photo"]["name"]);			
+ $img_location="uploadImage/student/" . $_FILES["photo"]["name"];
+       
+ //add data
     $sql = 'INSERT INTO studentadmissiontbl(StuAdmNo ,Surname,FirstName,OtherName,sex,DOB,address,PlaceOB,SchRegCode,ClassAT,CurClass,YOA,Term,parentName,parentPhone,parentEmail,photo,status) VALUES(:StuAdmNo ,:Surname,:FirstName,:OtherName,:sex,:DOB,:address,:PlaceOB,:SchRegCode,:ClassAT,:CurClass,:YOA,:Term,:parentName,:parentPhone,:parentEmail,:photo,:status)';
     $statement = $dbh->prepare($sql);
     $statement->execute([
@@ -33,7 +47,7 @@ if (empty($_SESSION['login_SchRegCode'])) {
     ':parentName' => $_POST['txtparentName'],
 	':parentPhone' => $_POST['txtparentPhone'],
   ':parentEmail' => $_POST['txtparentEmail'] ,
-	':photo' =>'uploadImage/student/no_image.jpg',
+	':photo' => $img_location,
   ':status' => '1'
 
     ]);
@@ -126,7 +140,7 @@ $mail->send();
 
     }
   }
-
+ }
 ?>
 <!DOCTYPE html>
 <html>
@@ -252,20 +266,22 @@ $mail->send();
                     <div class="ibox-content">
                         <div class="row">
                           <div class="ibox-content">
-                            <form method="post" class="form-horizontal">
+
+                          <form  action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
+
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Firstname</label>
                                 <div class="col-sm-10">
                                 <input type="text" name="txtfirstname" value="<?php if (isset($_POST['txtfirstname']))?><?php echo $_POST['txtfirstname']; ?>" class="form-control" required="">
                                 </div>
-                              </div>
+                            </div>
                               <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Othername</label>
                                 <div class="col-sm-10">
                                 <input type="text" name="txtothername" value="<?php if (isset($_POST['txtothername']))?><?php echo $_POST['txtothername']; ?>" class="form-control" required="">
                                 </div>
-                              </div>
+                            </div>
                               <div class="hr-line-dashed"></div>
                               <div class="form-group">
                                 <label class="col-sm-2 control-label">Surname</label>
@@ -282,7 +298,7 @@ $mail->send();
   							          <option value="">Select Sex</option>
  							            <option value="Female">Female</option>
   							          <option value="Male">Male</option>
-							            </select>	
+					              </select>	
                           </div>
                           </div>
                           <div class="hr-line-dashed"></div>
@@ -291,7 +307,7 @@ $mail->send();
                                 <div class="col-sm-10">
                                 <input type="date" name="txtdob" value="<?php if (isset($_POST['txtdob']))?><?php echo $_POST['txtdob']; ?>" class="form-control" required="">
                                 </div>
-                              </div>
+                            </div>
                               <div class="hr-line-dashed"></div>
                               <div class="form-group">
                                 <label class="col-sm-2 control-label">Address</label>
@@ -386,8 +402,16 @@ $mail->send();
                               </div>
                               <div class="hr-line-dashed"></div>
                               <div class="form-group">
+                                <label class="col-sm-2 control-label">Photo</label>
+                                <div class="col-sm-10">
+                              <input name="photo" type="file" class="inputFile" accept="image/png,image/jpeg,image/jpg" onChange="display_img(this)" />
+                             <img src="../uploadImage/student/no_image.jpg" alt="student image" width="80" height="69" id="logo-img" style="display: none;">
+                              </div>
+                              </div>
+                             
+                              <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
-                                  <button class="btn btn-primary" type="submit" name="btnadd">Save changes</button>
+                                  <button class="btn btn-primary" type="submit" name="btnadd">Save</button>
                                 </div>
                               </div>
                             </form>
@@ -409,7 +433,7 @@ $mail->send();
         </div>
 
         </div>
-        </div>
+</div>
 
 
     <!-- Mainly scripts -->
@@ -473,6 +497,20 @@ $mail->send();
 Array.from(document.querySelectorAll('button[data-for]')).
 forEach(addButtonTrigger);
     </script>
+
+<script>
+    function display_img(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#logo-img').attr('src', e.target.result);
+            $('#logo-img').show(); // Show the image
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+   
+</script>
 </body>
 
 </html>

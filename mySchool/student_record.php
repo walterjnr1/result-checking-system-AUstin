@@ -229,6 +229,8 @@ else {return false;
                         <?php } ?>
 	                      <a href="delete_student.php?id=<?php echo $row['StuAdmNo'];?>" onClick="return deldata('<?php echo $row['FirstName']; ?>');"><i class="fa fa-trash" title="Delete Student Account"></i> </a>		
                            <a href="edit_student.php?id=<?php echo $row['StuAdmNo'];?>" ><i class="fa fa-edit" title="Edit Student Account"></i> </a> 
+                           <a href="edit_photo.php?StuAdmNo=<?php echo $row['StuAdmNo'];?>" ><i class="fa fa-upload" title="Edit Student Photo"></i> </a> 
+
 			  </td></tr>
 
                                       </td></tr>
