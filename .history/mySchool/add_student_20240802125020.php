@@ -133,9 +133,9 @@ $mail->Subject = "Student Registration  | $website_name ";
 $mail->Body    = $message;
 $mail->send();
 
-        $_SESSION['success']="Student Admission No: $studentAdmNo Student registration Was successful . Student Details Sent to parent Email and Phone.";
+        $_SESSION['success']='Student Admission No: '.$studentAdmNo. ' '.'.Student registration Was successful . Student Details Sent to parent Email and Phone.';
       } catch (Exception $e) {
-        $_SESSION['error'] = "Problem adding Student. Mailer Error: {$mail->ErrorInfo}";
+        $_SESSION['error'] = 'Problem adding Student. Mailer Error: {$mail->ErrorInfo}';
         }
 
     }
