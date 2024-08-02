@@ -35,8 +35,9 @@ $row_result = $stmt->fetch();
                 -webkit-print-color-adjust: exact;
             }
             body {
-                font-size: 10pt;
+                font-size: 9pt;
                 margin: 0;
+        padding: 0;
             }
             
             table {
@@ -74,29 +75,36 @@ $row_result = $stmt->fetch();
             #report_card a[href="index.php"] {
     display: none;
   }
-  #report_card a[href="#"] {
-    display: none;
-  }
-
+  
+  #report_card {
+    width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        page-break-inside: avoid;
+    }
  
         }
 
 
     .style1 {font-size: 16px}
+    .style3 {font-size: 14}
     </style>
 </head>
 
 <body>
 <div class="p-4 bg-white text-black" id="report_card">
-        <p align="center"><a href="index"></a>  <a href="index">&lt;&lt; Home</a> <img src="<?php echo $row_result['logo'] ;   ?>" alt="logo" width="171" height="78"></p>
+        <p align="center"><a href="index"></a>  <a href="index.php">&lt;&lt; <span class="style3">Home</span></a> <img src="<?php echo $row_result['logo'] ;   ?>" alt="logo" width="61" height="45"></p>
 
-        <div class="student_img" align="right"> <img src="<?php echo $row_result['photo'] ;   ?>" alt="" width="98" height="86"> </div>
-        <table width="612" align="center" class="w-2_4 border-collapse border border-zinc-300">
+        <div class="student_img" align="right"> 
+          <p><img src="<?php echo $row_result['photo'] ;   ?>" alt="" width="56" height="51"></p>
+          <p>&nbsp; </p>
+        </div>
+        <table width="787" align="center" class="w-2_4 border-collapse border border-zinc-300">
 
             <thead>
                 <tr class="border border-zinc-300">
-                    <td class="border border-zinc-300 p-2">School ID</td>
-                    <td class="font-bold p-2 fn-lg"><strong><?php echo $row_result['SchRegCode'] ;   ?></strong></td>
+                    <td width="93" class="border border-zinc-300 p-2">School ID</td>
+                    <td width="157" class="font-bold p-2 fn-lg"><strong><?php echo $row_result['SchRegCode'] ;   ?></strong></td>
                 </tr>
                 <tr class="border border-zinc-300">
                     <td class="border border-zinc-300 p-2">School Name</td>
@@ -106,16 +114,15 @@ $row_result = $stmt->fetch();
                     <td class="border border-zinc-300 p-2">Exams Type</td>
                     <td class="font-bold p-2 fn-lg"><strong><?php echo $row_result['exam_name'] ;   ?></strong></td>
                 </tr>
-                <tr class="bg-row ">                </tr>
             </thead>
 
             <tbody>
                 <tr>
                     <td class="border border-zinc-300 p-2">StudentID</td>
                     <td class="p-2 border-zinc-300 border"><strong><?php echo $row_result['StuAdmNo'] ;   ?></strong></td>
-                    <td class="p-2 border-zinc-300 border"><strong>Subjects</strong></td>
-                    <td class="p-2 border-zinc-300 border"><strong>Grade</strong></td>
-                    <td class="p-2 border-zinc-300 border"><strong>Remark</strong></td>
+                    <td width="131" class="p-2 border-zinc-300 border"><strong>Subjects</strong></td>
+                    <td width="165" class="p-2 border-zinc-300 border"><strong>Grade</strong></td>
+                    <td width="213" class="p-2 border-zinc-300 border"><strong>Remark</strong></td>
                 </tr>
                 <tr>
                     <td class="border border-zinc-300 p-2">Student Name</td>
@@ -196,7 +203,6 @@ $row_result = $stmt->fetch();
                     <td class="border border-zinc-300 p-2"><?php echo $row_result['creativeArt'] ;   ?></td>
                     <td class="border border-zinc-300 p-2"><?php echo $row_result['creativeArtRemark'] ;   ?></td>
                 </tr>
-              
             </tbody>
 
             <tfoot>
@@ -218,21 +224,14 @@ $row_result = $stmt->fetch();
                     <td class="border border-zinc-300 p-2 font-bold">Average %</td>
                     <td class="border border-zinc-300 p-2 font-bold text-center" colspan="2"><?php echo $row_result['AVGSc'] ;   ?></td>
                 </tr>
-
-                <tr class="bg-row">                </tr>
                 <tr>
                     <td class="style1 text-left p-2 border-zinc-300 border" colspan="2"><strong>Class Teacher's Remark : </strong><?php echo $row_result['TeachRmk'] ;   ?>.</td>
                     <td class="border border-zinc-300 p-2" colspan="1"></td>
                     <td class="border border-zinc-300 p-2" colspan="0"></td>
-                    <td class="border border-zinc-300 p-2" colspan="2"><p class="pricipal"><img src="uploadImage/schools/no-signature.png" width="85" height="55"></p>
+                    <td class="border border-zinc-300 p-2" colspan="2"><p class="pricipal"><img src="<?php echo $row_result['signature'] ;   ?>" width="54" height="41"></p>
                     <p class="pricipal"><strong>Principal</strong></p></td>
                     <!-- <td class="border border-zinc-300 p-2" colspan="1"></td> -->
                 </tr>
-                <tr>
-
-                    <td colspan="5" class="border border-zinc-300 p-2 text-left  style1">&nbsp;</td>
-                </tr>
-                <tr class="bg-row">                </tr>
             </tfoot>
       </table>
 
