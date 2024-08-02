@@ -86,7 +86,7 @@ else {return false;
       <div class="card m-t-3">
       <div class="card-body">
       <h4 class="text-black"> 
-        <a href="index_scratchcard.php"><button type="submit" name="btnsubmit" class="btn btn-primary">Generate ScratchCard</button> </a>
+        <a href="add_class.php"><button type="submit" name="btnsubmit" class="btn btn-primary">Add Class</button> </a>
  </h4>
       <p>&nbsp;</p>
       <div class="table-responsive">
