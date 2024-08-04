@@ -100,7 +100,7 @@ if(isset($_POST["btncheckresult"]))
           $mail->Port       = $email_port;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
      
         //Recipients
-        $mail->setFrom($website_email, ' Contact us');
+        $mail->setFrom($email, ' Contact us');
         $mail->addAddress($website_email,'Result Checker System');     //Add a recipient
      
 		$message = "
