@@ -1,16 +1,29 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require '../vendor/autoload.php';
-include('../inc/controller.php');
 
+include('../inc/controller.php');
 if(strlen($_SESSION['login_email'])=="")
   {   
    header("Location: login.php"); 
-  }
+   }
+
+   if (isset($_GET['region_id'])) {
+    $regionId = $_GET['region_id'];
+    $sql = "SELECT * FROM tbldistrict WHERE region_id = $regionId";
+    $districts = $dbh->query($sql);
+    $districts->setFetchMode(PDO::FETCH_ASSOC);
+
+    echo '<option value="">Select District Name</option>';
+    while ($row = $districts->fetch()) {
+        echo '<option value="'. $row['id']. '">'. $row['DistrictName']. '</option>';
+    }
+}
 
 if(isset($_POST["btnadd"]))
 {
@@ -26,6 +39,7 @@ $district = $_POST['cmddistrict'];
 $region = $_POST['cmdregion'];
 $zone = $_POST['cmdzone'];
 $ITname = $_POST['txtITname'];
+
 
 $length = 12;
 $password = substr(str_shuffle("1234567abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP"), 0, $length);
@@ -413,7 +427,7 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
 
 function getDistricts(regionId) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'getDistrict.php?region_id=' + regionId, true);
+    xhr.open('GET', 'get_districts.php?region_id=' + regionId, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var response = xhr.responseText;

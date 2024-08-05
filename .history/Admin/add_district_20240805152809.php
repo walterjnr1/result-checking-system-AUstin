@@ -9,11 +9,10 @@ if(isset($_POST["btnadd"]))
 {
 
 $district = strtoupper($_POST['txtdistrict']);
-$region = strtoupper($_POST['cmdregion']);
 
 ///check if district already exist 
-$stmt = $dbh->prepare("SELECT * FROM tbldistrict WHERE DistrictName=? and RegionFound=?");
-$stmt->execute([$district,$region]); 
+$stmt = $dbh->prepare("SELECT * FROM tbldistrict WHERE DistrictName=?");
+$stmt->execute([$district]); 
 $row_district = $stmt->fetch();
 
 if ($row_district) {
@@ -22,23 +21,23 @@ $error='This District Already Exist in our Database ';
 
   
  //Add district details
-$sql = 'INSERT INTO tbldistrict(DistrictName,RegionFound) VALUES(:DistrictName,:RegionFound)';
+$sql = 'INSERT INTO tbldistrict(DistrictName) VALUES(:DistrictName)';
 $statement = $dbh->prepare($sql);
 $statement->execute([
 	':DistrictName' => $district,
-  ':RegionFound' => $region
+	
 ]);
 if ($statement){
 
 //save activity log details
-$task= $fullname.' '.'Created New District '.' '. 'On' . ' '.$current_date;
+$task= $fullname.' '.'Created New Region '.' '. 'On' . ' '.$current_date;
 $sql = 'INSERT INTO activity_log(task) VALUES(:task)';
 $statement = $dbh->prepare($sql);
 $statement->execute([
 	':task' => $task
 ]);
 
-//header( "refresh:2;url= district_record.php" ); 
+header( "refresh:2;url= district_record.php" ); 
 $success='Added District Successfully ';
 
 }else{

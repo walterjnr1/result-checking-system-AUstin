@@ -9,11 +9,10 @@ if(isset($_POST["btnadd"]))
 {
 
 $district = strtoupper($_POST['txtdistrict']);
-$region = strtoupper($_POST['cmdregion']);
 
 ///check if district already exist 
-$stmt = $dbh->prepare("SELECT * FROM tbldistrict WHERE DistrictName=? and RegionFound=?");
-$stmt->execute([$district,$region]); 
+$stmt = $dbh->prepare("SELECT * FROM tbldistrict WHERE DistrictName=?");
+$stmt->execute([$district]); 
 $row_district = $stmt->fetch();
 
 if ($row_district) {
@@ -22,11 +21,11 @@ $error='This District Already Exist in our Database ';
 
   
  //Add district details
-$sql = 'INSERT INTO tbldistrict(DistrictName,RegionFound) VALUES(:DistrictName,:RegionFound)';
+$sql = 'INSERT INTO tbldistrict(DistrictName) VALUES(:DistrictName)';
 $statement = $dbh->prepare($sql);
 $statement->execute([
 	':DistrictName' => $district,
-  ':RegionFound' => $region
+	
 ]);
 if ($statement){
 
@@ -38,7 +37,7 @@ $statement->execute([
 	':task' => $task
 ]);
 
-//header( "refresh:2;url= district_record.php" ); 
+header( "refresh:2;url= district_record.php" ); 
 $success='Added District Successfully ';
 
 }else{
@@ -119,20 +118,21 @@ $error='Problem Adding New District ';
             </div>
             <div class="card-body">
             <form  action="" method="POST" >
-              <div class="form-group">
-                <label for="exampleInputPassword1">Region</label>
+            <div class="form-group">
+                <label for="exampleInputPassword1">District</label>
                 <?php
-			      $sql = "select * from tblregion";
+			    $sql = "select * from tbldistrict";
              $district = $dbh->query($sql);                       
              $district->setFetchMode(PDO::FETCH_ASSOC);
-             echo '<select name="cmdregion"  id="cmdregion" class="form-control" >';
-			 			     echo '<option value="">Select Region</option>';
+             echo '<select name="cmddistrict"  id="cmddistrict" class="form-control" >';
+			 			     echo '<option value="">Select District Name</option>';
              while ( $row = $district->fetch() ) 
              {
-                echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                echo '<option value="'.$row['id'].'">'.$row['DistrictName'].'</option>';
              }
+
              echo '</select>';
-			       ?>    
+			 ?>    
                  </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Name of District</label>

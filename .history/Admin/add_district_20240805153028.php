@@ -9,7 +9,7 @@ if(isset($_POST["btnadd"]))
 {
 
 $district = strtoupper($_POST['txtdistrict']);
-$region = strtoupper($_POST['cmdregion']);
+$region = strtoupper($_POST['cmdregion ']);
 
 ///check if district already exist 
 $stmt = $dbh->prepare("SELECT * FROM tbldistrict WHERE DistrictName=? and RegionFound=?");
@@ -22,11 +22,11 @@ $error='This District Already Exist in our Database ';
 
   
  //Add district details
-$sql = 'INSERT INTO tbldistrict(DistrictName,RegionFound) VALUES(:DistrictName,:RegionFound)';
+$sql = 'INSERT INTO tbldistrict(DistrictName) VALUES(:DistrictName)';
 $statement = $dbh->prepare($sql);
 $statement->execute([
 	':DistrictName' => $district,
-  ':RegionFound' => $region
+	
 ]);
 if ($statement){
 
@@ -38,7 +38,7 @@ $statement->execute([
 	':task' => $task
 ]);
 
-//header( "refresh:2;url= district_record.php" ); 
+header( "refresh:2;url= district_record.php" ); 
 $success='Added District Successfully ';
 
 }else{

@@ -9,7 +9,7 @@ if(isset($_POST["btnadd"]))
 {
 
 $district = strtoupper($_POST['txtdistrict']);
-$region = strtoupper($_POST['cmdregion']);
+$region = strtoupper($_POST['cmdregion ']);
 
 ///check if district already exist 
 $stmt = $dbh->prepare("SELECT * FROM tbldistrict WHERE DistrictName=? and RegionFound=?");

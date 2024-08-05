@@ -8,41 +8,40 @@ if(strlen($_SESSION['login_email'])=="")
 if(isset($_POST["btnadd"]))
 {
 
-$district = strtoupper($_POST['txtdistrict']);
-$region = strtoupper($_POST['cmdregion']);
+$zone = strtoupper($_POST['txtzone']);
 
-///check if district already exist 
-$stmt = $dbh->prepare("SELECT * FROM tbldistrict WHERE DistrictName=? and RegionFound=?");
-$stmt->execute([$district,$region]); 
-$row_district = $stmt->fetch();
+///check if zone already exist 
+$stmt = $dbh->prepare("SELECT * FROM tblzone WHERE name=?");
+$stmt->execute([$zone]); 
+$row_zone = $stmt->fetch();
 
-if ($row_district) {
-$error='This District Already Exist in our Database ';
+if ($row_zone) {
+$error='This Zone Already Exist in our Database ';
 } else {
 
   
- //Add district details
-$sql = 'INSERT INTO tbldistrict(DistrictName,RegionFound) VALUES(:DistrictName,:RegionFound)';
+ //Add school details
+$sql = 'INSERT INTO tblzone(name) VALUES(:name)';
 $statement = $dbh->prepare($sql);
 $statement->execute([
-	':DistrictName' => $district,
-  ':RegionFound' => $region
+	':name' => $zone,
+	
 ]);
 if ($statement){
 
 //save activity log details
-$task= $fullname.' '.'Created New District '.' '. 'On' . ' '.$current_date;
+$task= $fullname.' '.'Created New Zone '.' '. 'On' . ' '.$current_date;
 $sql = 'INSERT INTO activity_log(task) VALUES(:task)';
 $statement = $dbh->prepare($sql);
 $statement->execute([
 	':task' => $task
 ]);
 
-//header( "refresh:2;url= district_record.php" ); 
-$success='Added District Successfully ';
+header( "refresh:2;url= zone_record.php" ); 
+$success='Added Zone Successfully ';
 
 }else{
-$error='Problem Adding New District ';
+$error='Problem Adding New Zone ';
 }
 }
 }
@@ -55,7 +54,7 @@ $error='Problem Adding New District ';
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Add District|<?php echo $website_name;   ?></title>
+<title>Add Zone|<?php echo $website_name;   ?></title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -95,10 +94,10 @@ $error='Problem Adding New District ';
     <!-- Content Header (Page header) -->
 	
     <div class="content-header sty-one">
-      <h1>Add District</h1>
+      <h1>Add Zone</h1>
       <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li><i class="fa fa-angle-right"></i>Add District</li>
+        <li><i class="fa fa-angle-right"></i>Add Zone</li>
       </ol>
     </div>
      <p align="center">	
@@ -115,29 +114,16 @@ $error='Problem Adding New District ';
         <div class="col-lg-6">
           <div class="card card-outline">
             <div class="card-header bg-blue">
-              <h5 class="text-white m-b-0">Add New District</h5>
+              <h5 class="text-white m-b-0">Add New Zone</h5>
             </div>
             <div class="card-body">
             <form  action="" method="POST" >
               <div class="form-group">
-                <label for="exampleInputPassword1">Region</label>
-                <?php
-			      $sql = "select * from tblregion";
-             $district = $dbh->query($sql);                       
-             $district->setFetchMode(PDO::FETCH_ASSOC);
-             echo '<select name="cmdregion"  id="cmdregion" class="form-control" >';
-			 			     echo '<option value="">Select Region</option>';
-             while ( $row = $district->fetch() ) 
-             {
-                echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
-             }
-             echo '</select>';
-			       ?>    
-                 </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Name of District</label>
-                <input class="form-control" name="txtdistrict" value="<?php if (isset($_POST['txtdistrict']))?><?php echo $_POST['txtdistrict']; ?>" type="text">
+                <label for="exampleInputEmail1">Name of Zone</label>
+                <input class="form-control" name="txtzone" value="<?php if (isset($_POST['txtzone']))?><?php echo $_POST['txtzone']; ?>" type="text">
               </div>
+             
+            
               <button type="submit" name="btnadd" class="btn btn-success">Save</button>
             </form>
             </div>

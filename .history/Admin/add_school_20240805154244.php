@@ -1,16 +1,17 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require '../vendor/autoload.php';
-include('../inc/controller.php');
 
+include('../inc/controller.php');
 if(strlen($_SESSION['login_email'])=="")
   {   
    header("Location: login.php"); 
-  }
+   }
 
 if(isset($_POST["btnadd"]))
 {
@@ -26,6 +27,7 @@ $district = $_POST['cmddistrict'];
 $region = $_POST['cmdregion'];
 $zone = $_POST['cmdzone'];
 $ITname = $_POST['txtITname'];
+
 
 $length = 12;
 $password = substr(str_shuffle("1234567abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP"), 0, $length);
@@ -263,26 +265,22 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
                 <input class="form-control" name="txtschoolcreationDate" value="<?php if (isset($_POST['txtytxtschoolcreationDateoe']))?><?php echo $_POST['txtschoolcreationDate']; ?>" type="text" required>
             </div>
             <div class="form-group">
-    <label for="exampleInputPassword1">Region</label>
-    <?php
-    $sql = "select * from tblregion";
-    $region = $dbh->query($sql);
-    $region->setFetchMode(PDO::FETCH_ASSOC);
-    echo '<select name="cmdregion" id="cmdregion" class="form-control" onchange="getDistricts(this.value)">';
-    echo '<option value="">Select Region Name</option>';
-    while ($row = $region->fetch()) {
-        echo '<option value="'. $row['id']. '">'. $row['name']. '</option>';
-    }
-    echo '</select>';
-   ?>
-</div>
+                <label for="exampleInputPassword1">District</label>
+                <?php
+			$sql = "select * from tbldistrict";
+             $district = $dbh->query($sql);                       
+             $district->setFetchMode(PDO::FETCH_ASSOC);
+             echo '<select name="cmddistrict"  id="cmddistrict" class="form-control" >';
+			 			     echo '<option value="">Select District Name</option>';
+             while ( $row = $district->fetch() ) 
+             {
+                echo '<option value="'.$row['id'].'">'.$row['DistrictName'].'</option>';
+             }
 
-<div class="form-group">
-    <label for="exampleInputPassword1">District</label>
-    <select name="cmddistrict" id="cmddistrict" class="form-control">
-        <option value="">Select District Name</option>
-    </select>
-</div>
+             echo '</select>';
+			 ?>    
+                 </div>
+            
             <div class="form-group">
                 <label for="exampleInputPassword1">Zone</label>
                 <?php
@@ -409,22 +407,6 @@ $error = "Problem adding School. Mailer Error: {$mail->ErrorInfo}";
       }
     });
   </script> 
-  <script>
-
-function getDistricts(regionId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'getDistrict.php?region_id=' + regionId, true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var response = xhr.responseText;
-            var districtSelect = document.getElementById('cmddistrict');
-            districtSelect.innerHTML = response;
-        }
-    };
-    xhr.send();
-}
-
-  </script>
 <script>
     $('#demo').steps({
       onFinish: function () {

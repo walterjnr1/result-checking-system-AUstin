@@ -1,4 +1,5 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -6,7 +7,6 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require '../vendor/autoload.php';
 include('../inc/controller.php');
-
 if(strlen($_SESSION['login_email'])=="")
   {   
    header("Location: login.php"); 
@@ -26,6 +26,7 @@ $district = $_POST['cmddistrict'];
 $region = $_POST['cmdregion'];
 $zone = $_POST['cmdzone'];
 $ITname = $_POST['txtITname'];
+
 
 $length = 12;
 $password = substr(str_shuffle("1234567abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP"), 0, $length);

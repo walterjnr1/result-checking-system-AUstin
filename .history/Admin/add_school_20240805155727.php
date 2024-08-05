@@ -1,4 +1,5 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -26,6 +27,7 @@ $district = $_POST['cmddistrict'];
 $region = $_POST['cmdregion'];
 $zone = $_POST['cmdzone'];
 $ITname = $_POST['txtITname'];
+
 
 $length = 12;
 $password = substr(str_shuffle("1234567abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP"), 0, $length);
