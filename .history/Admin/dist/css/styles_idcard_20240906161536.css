@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #00bfa5;
+    /* Light teal background */
+    margin: 0;
+    column-gap: 20px;
+}
+
+.id-card,
+.back {
+    width: 300px;
+    height: 500px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.top-section {
+    position: relative;
+    width: 100%;
+}
+
+.top-section p {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: bold;
+}
+
+.top-section span{
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: bold;
+}
+.top-section img{
+    position: absolute;
+    width: 45px;
+    border-radius: 50%;
+    right: 5px;
+    top: 5px;
+}
+
+.photo-section {
+    position: relative;
+}
+
+.photo-section img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 4px solid #ffde00;
+    position: absolute;
+    top: -130px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.details-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.details-section h3 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #003b64;
+}
+
+.details-section p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.more-details {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    row-gap: 5px;
+    margin-top: 20px;
+    width: 100%;
+    padding-right: 15%;
+    padding-left: 15%;
+
+}
+
+.more-details p {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+
+
+
+.qr-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.qr-section img {
+    width: 120px;
+    height: 120px;
+}
+
+
+
+@media print {
+    body {
+        background-color: white;
+    }
+
+    .id-card {
+        transform: none;
+    }
+}
